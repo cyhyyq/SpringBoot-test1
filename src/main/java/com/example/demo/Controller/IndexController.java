@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-public class controller {
+public class IndexController {
     @GetMapping("/hello")
     public String gethello(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model){
         model.addAttribute("name",name);
