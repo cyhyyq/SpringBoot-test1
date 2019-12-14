@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.dto.AccessTokenDTO;
+import com.example.demo.dto.GithubUser;
 import com.example.demo.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,9 @@ public class AuthorizeController {
         accessTokenDTO.setCode(code);
         accessTokenDTO.setRedirect_uri("http://localhost:8081/callback");
         accessTokenDTO.setState(state);
-        githubProvider.getAccessToken(accessTokenDTO);
+        String accessToken=githubProvider.getAccessToken(accessTokenDTO);
+        GithubUser user=githubProvider.getUser(accessToken);
+        System.out.println(user.getId());
         return "index";
     }
 }
